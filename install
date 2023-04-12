@@ -21,11 +21,11 @@ ENABLE_RPI_HID_PATH=/opt/enable-rpi-hid
 ENABLE_RPI_HID_DIR=$(dirname $ENABLE_RPI_HID_PATH)
 
 mkdir -p "$ENABLE_RPI_HID_DIR"
-cp ./enable-rpi-hid "$ENABLE_RPI_HID_PATH"
+cp ./hid/enable-rpi-hid "$ENABLE_RPI_HID_PATH"
 chmod +x "$ENABLE_RPI_HID_PATH"
 
 sed -e "s@{{ gesture_map_hid }}@${ENABLE_RPI_HID_PATH}@g" \
-  usb-gadget.systemd.j2 > /lib/systemd/system/usb-gadget.service
+  ./hid/usb-gadget.systemd.j2 > /lib/systemd/system/usb-gadget.service
 
 systemctl daemon-reload
 systemctl enable usb-gadget.service
