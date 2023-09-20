@@ -7,7 +7,9 @@ line_width = 5
 def trail(screen, pressed, mouse_pos):
     global points
     if not pressed:
-        points = []
+        if len(points) > 0:
+            pygame.time.wait(5)
+            points.pop(0)
     if pressed:
         points.append(mouse_pos)
         if len(points) > max_points:
