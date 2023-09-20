@@ -29,7 +29,7 @@ class Application():
         while self.alive:
             for event in pygame.event.get():
                 if event.type == pygame.FINGERDOWN:
-                    self.log(event)
+                    self.logtext = event.finger_id
                 # if event.type == pygame.MOUSEBUTTONDOWN:
                 #     self.log = str(event)
                 if event.type == pygame.MOUSEBUTTONUP:
@@ -51,7 +51,6 @@ class Application():
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
             self.screen.blit(fps_text, (10, 10))
 
-            self.logtext = str(pygame._sdl2.touch.get_num_fingers())
             log_text = self.font.render(self.logtext, True, (255,255,255))
             self.screen.blit(log_text, (10, self.size[1]-30))
 
