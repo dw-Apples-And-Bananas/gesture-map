@@ -1,5 +1,5 @@
-from pygame.locals import *
 import time
+import pygame
 
 
 class Mouse():
@@ -17,11 +17,11 @@ class Mouse():
 
     def update(self, event):
         self.tap = False
-        if event.type == MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:
             self.downTime = time.time()
             self.down, self.up = True, False
             print(self.down)
-        elif event.type == MOUSEBUTTONUP:
+        elif event.type == pygame.MOUSEBUTTONUP:
             if time.time() - self.downTime < 0.5:
                 self.tap = True
             self.downTime = 0
