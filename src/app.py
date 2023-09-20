@@ -28,7 +28,9 @@ class Application():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     pass
                 if event.type == pygame.MOUSEBUTTONUP:
-                    gesture.run(gesture.get(self.points)[0])
+                    gesture_list = gesture.get(self.points)
+                    if gesture_list != []:
+                        gesture.run(gesture_list[0])
                     # print(f"start: {self.points[0]}\nend: {self.points[-1]}")
                     self.points = []
                 self.mouse.update(event)
