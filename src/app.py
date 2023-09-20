@@ -19,6 +19,7 @@ class Application():
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont('Arial', 18)
         self.mouse = Mouse()
+        self.fingers = 0
         self.logtext = ""
         self.points = []
         self.loop()
@@ -29,7 +30,10 @@ class Application():
         while self.alive:
             for event in pygame.event.get():
                 if event.type == pygame.FINGERDOWN:
-                    self.logtext = str(event.finger_id)
+                    self.fingers += 1
+                    # self.logtext = str(event.finger_id)
+                if event.type == pygame.FINGERUP:
+                    self.fingers -= 1
                 # if event.type == pygame.MOUSEBUTTONDOWN:
                 #     self.log = str(event)
                 if event.type == pygame.MOUSEBUTTONUP:
@@ -51,6 +55,7 @@ class Application():
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
             self.screen.blit(fps_text, (10, 10))
 
+            self.logtext = str(self.fingers)
             log_text = self.font.render(self.logtext, True, (255,255,255))
             self.screen.blit(log_text, (10, self.size[1]-30))
 
