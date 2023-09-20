@@ -9,11 +9,11 @@ import platform
 class Application():
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((200, 200))
-        # if platform.system() == "Linux":
-        #     self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-        # else:
-        #     self.screen = pygame.display.set_mode((800,600))
+        # self.screen = pygame.display.set_mode((200, 200))
+        if platform.system() == "Linux":
+            self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        else:
+            self.screen = pygame.display.set_mode((800,600))
         pygame.display.set_caption("Gesture Map")
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont('Arial', 20)
@@ -28,7 +28,7 @@ class Application():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     pass
                 if event.type == pygame.MOUSEBUTTONUP:
-                    print(gesture.get(self.points))
+                    gesture.run(gesture.get(self.points)[0])
                     # print(f"start: {self.points[0]}\nend: {self.points[-1]}")
                     self.points = []
                 self.mouse.update(event)
