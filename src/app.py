@@ -9,7 +9,7 @@ import platform
 class Application():
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((800,600))
+        self.screen = pygame.display.set_mode((200, 200))
         # if platform.system() == "Linux":
         #     self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         # else:
@@ -44,7 +44,7 @@ class Application():
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
             self.screen.blit(fps_text, (10, 10))
 
-            if mouse_pos == (0,0):
+            if mouse_pos[0] < 10 and mouse_pos[1] < 10 :
                 self.alive = False
 
             pygame.display.update()
