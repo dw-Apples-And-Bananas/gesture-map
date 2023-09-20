@@ -9,10 +9,11 @@ import platform
 class Application():
     def __init__(self):
         pygame.init()
-        if platform.system() == "Linux":
-            self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-        else:
-            self.screen = pygame.display.set_mode((800,600))
+        self.screen = pygame.display.set_mode((800,600))
+        # if platform.system() == "Linux":
+        #     self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        # else:
+        #     self.screen = pygame.display.set_mode((800,600))
         pygame.display.set_caption("Gesture Map")
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont('Arial', 20)
@@ -42,6 +43,9 @@ class Application():
 
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
             self.screen.blit(fps_text, (10, 10))
+
+            if mouse_pos == (0,0):
+                self.alive = False
 
             pygame.display.update()
             self.clock.tick(60)
