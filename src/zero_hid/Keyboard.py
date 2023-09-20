@@ -45,7 +45,7 @@ class Keyboard:
             send_keystroke(self.dev, mods, keys[0])
             sleep(delay)
 
-    def press(self, mods: List[int], key_code: int = 0, release=True):
+    def press(self, mods: List, key_code: int = 0, release=True):
         if len(mods) == 1:
             mods = mods[0]
         else:
