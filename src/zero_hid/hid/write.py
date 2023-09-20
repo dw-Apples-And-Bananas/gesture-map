@@ -61,9 +61,10 @@ class ProcessWithResult(multiprocessing.Process):
 
 def _write_to_hid_interface_immediately(hid_dev, buffer):
     try:
-            hid_dev.seek(0, 0)
-            hid_dev.flush()
-            hid_dev.write(bytearray(buffer))
+        with open(hid_dev, "wb") as f:
+            f.seek(0, 0)
+            f.flush()
+            f.write(bytearray(buffer))
             
     except BlockingIOError:
         logger.error(
