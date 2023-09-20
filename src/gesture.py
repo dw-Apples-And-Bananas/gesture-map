@@ -32,13 +32,13 @@ funcs = {
     "tap1": [keyboard.press, [[], KeyCodes.KEY_B]],
     "tap2": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL], KeyCodes.KEY_Z]],
     "tap3": [keyboard.press, [[0x12], KeyCodes.KEY_Z]],
-    "tap4": [print, ["tap4"]],
-    "tap5": [print, ["tap5"]],
+    "tap4": [keyboard.press, [[], KeyCodes.KEY_L]],
+    "tap5": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL], KeyCodes.KEY_S]],
     "hold": [keyboard.press, [[KeyCodes.MOD_LEFT_SHIFT], 0, False]],
     "up": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL], KeyCodes.KEY_Z]],
     "down": [keyboard.press, [[0x12], KeyCodes.KEY_Z]],
-    "left": [keyboard.press, [[], KeyCodes.KEY_L]],
-    "right": [keyboard.press, [[], KeyCodes.KEY_R]],
+    "left": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL], KeyCodes.KEY_MINUS]],
+    "right": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL], KeyCodes.KEY_EQUAL]],
     "release": [keyboard.release, []],
 }
 def run(gesture):
