@@ -27,8 +27,9 @@ class Application():
         self.alive = True
         while self.alive:
             for event in pygame.event.get():
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.log = str(event)
+                self.log = str(event)
+                # if event.type == pygame.MOUSEBUTTONDOWN:
+                #     self.log = str(event)
                 if event.type == pygame.MOUSEBUTTONUP:
                     if len(self.points) > 0:
                         gesture_list = gesture.get(self.points)
