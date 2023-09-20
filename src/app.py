@@ -2,6 +2,7 @@ import pygame
 import sys
 from trail import trail
 from components.mouse import Mouse
+import gesture
 
 
 class Application():
@@ -13,24 +14,27 @@ class Application():
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont('Arial', 20)
         self.mouse = Mouse()
+        self.points = []
         self.loop()
 
     def loop(self):
         self.alive = True
         while self.alive:
             for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pass
+                if event.type == pygame.MOUSEBUTTONUP:
+                    print(gesture.get(self.points))
+                    # print(f"start: {self.points[0]}\nend: {self.points[-1]}")
+                    self.points = []
                 self.mouse.update(event)
                 if event.type == pygame.QUIT:
                     self.alive = False
-
             mouse_pressed = pygame.mouse.get_pressed()[0]
             mouse_pos = pygame.mouse.get_pos()
-
-            if self.mouse.tapped():
-                print("tap")
-
+            if mouse_pressed:
+                self.points.append(mouse_pos)
             self.screen.fill((0,0,0))
-
             trail(self.screen, mouse_pressed, mouse_pos)
 
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
@@ -41,6 +45,5 @@ class Application():
 
         pygame.quit()
         sys.exit()
-            
 
 Application()
