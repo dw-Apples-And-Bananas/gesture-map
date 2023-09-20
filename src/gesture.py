@@ -1,3 +1,6 @@
+import platform
+from zero_hid import Keyboard, KeyCodes
+
 def get(points):
     start = points[0]
     end = points[-1]
@@ -23,3 +26,16 @@ def inxy(points, _range, xy):
         if diff < -_range or diff > _range:
             return False
     return True
+
+def run(gesture):
+    funcs = {
+        "up": [Keyboard.press, [[], KeyCodes.KEY_U]],
+        "down": [Keyboard.press, [[], KeyCodes.KEY_D]],
+        "left": [Keyboard.press, [[], KeyCodes.KEY_L]],
+        "right": [Keyboard.press, [[], KeyCodes.KEY_R]],
+    }
+    func, args = funcs[gesture]
+    if platform.system() == "Linux":
+        func(*args)
+    else:
+        print(func, args)

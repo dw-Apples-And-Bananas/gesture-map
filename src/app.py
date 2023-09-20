@@ -3,13 +3,16 @@ import sys
 from trail import trail
 from components.mouse import Mouse
 import gesture
+import platform
 
 
 class Application():
     def __init__(self):
         pygame.init()
-        # self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-        self.screen = pygame.display.set_mode((800,600))
+        if platform.system() == "Linux":
+            self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        else:
+            self.screen = pygame.display.set_mode((800,600))
         pygame.display.set_caption("Gesture Map")
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont('Arial', 20)
