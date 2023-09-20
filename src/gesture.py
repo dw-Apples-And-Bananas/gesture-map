@@ -30,14 +30,13 @@ def inxy(points, _range, xy):
 
 def run(gesture):
     funcs = {
-        "up": [keyboard.press, [[], KeyCodes.KEY_U]],
-        "down": [keyboard.press, [[], KeyCodes.KEY_D]],
+        "up": [keyboard.press, [[KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_Z]],
+        "down": [keyboard.press, [[KeyCodes.MOD_LEFT_GUI, KeyCodes.MOD_RIGHT_SHIFT], KeyCodes.KEY_Z]],
         "left": [keyboard.press, [[], KeyCodes.KEY_L]],
         "right": [keyboard.press, [[], KeyCodes.KEY_R]],
     }
-    keyboard.press([], KeyCodes.KEY_I)
-    # func, args = funcs[gesture]
-    # if platform.system() == "Linux":
-    #     func(*args)
-    # else:
-    #     print(func, args)
+    func, args = funcs[gesture]
+    if platform.system() == "Linux":
+        func(*args)
+    else:
+        print(func, args)
