@@ -15,10 +15,12 @@ class Application():
         else:
             self.screen = pygame.display.set_mode((800,600))
         pygame.display.set_caption("Gesture Map")
+        self.size = pygame.display.get_window_size()
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.SysFont('Arial', 20)
+        self.font = pygame.font.SysFont('Arial', 24)
         self.mouse = Mouse()
         self.points = []
+        self.log = ""
         self.loop()
 
     def loop(self):
@@ -26,12 +28,12 @@ class Application():
         while self.alive:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    pass
+                    self.log = str(event)
                 if event.type == pygame.MOUSEBUTTONUP:
-                    gesture_list = gesture.get(self.points)
-                    if gesture_list != []:
-                        gesture.run(gesture_list[0])
-                    # print(f"start: {self.points[0]}\nend: {self.points[-1]}")
+                    if len(self.points) > 0:
+                        gesture_list = gesture.get(self.points)
+                        if gesture_list != []:
+                            gesture.run(gesture_list[0])
                     self.points = []
                 self.mouse.update(event)
                 if event.type == pygame.QUIT:
@@ -46,7 +48,10 @@ class Application():
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
             self.screen.blit(fps_text, (10, 10))
 
-            if mouse_pos[0] < 10 and mouse_pos[1] < 10 :
+            log_text = self.font.render(self.log, True, (255,255,255))
+            self.screen.blit(log_text, (10, self.size[1]-30))
+
+            if mouse_pos[0] < 10 and mouse_pos[1] < 10 and platform.system() == "Linux":
                 self.alive = False
 
             pygame.display.update()
