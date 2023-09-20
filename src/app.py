@@ -29,7 +29,7 @@ class Application():
         while self.alive:
             for event in pygame.event.get():
                 if event.type == pygame.FINGERDOWN:
-                    self.logtext = event.finger_id
+                    self.logtext = str(event.finger_id)
                 # if event.type == pygame.MOUSEBUTTONDOWN:
                 #     self.log = str(event)
                 if event.type == pygame.MOUSEBUTTONUP:
