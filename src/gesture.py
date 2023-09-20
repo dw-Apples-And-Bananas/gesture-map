@@ -35,8 +35,9 @@ def run(gesture):
         "left": [keyboard.press, [[], KeyCodes.KEY_L]],
         "right": [keyboard.press, [[], KeyCodes.KEY_R]],
     }
-    func, args = funcs[gesture]
-    if platform.system() == "Linux":
-        func(*args)
-    else:
-        print(func, args)
+    keyboard.press([], KeyCodes.KEY_I)
+    # func, args = funcs[gesture]
+    # if platform.system() == "Linux":
+    #     func(*args)
+    # else:
+    #     print(func, args)
