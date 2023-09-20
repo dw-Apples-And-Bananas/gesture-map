@@ -20,14 +20,15 @@ class Application():
         self.font = pygame.font.SysFont('Arial', 18)
         self.mouse = Mouse()
         self.points = []
-        self.log = ""
         self.loop()
+
 
     def loop(self):
         self.alive = True
         while self.alive:
             for event in pygame.event.get():
-                self.log = str(event)
+                if event.type == pygame.FINGERDOWN:
+                    self.log(event)
                 # if event.type == pygame.MOUSEBUTTONDOWN:
                 #     self.log = str(event)
                 if event.type == pygame.MOUSEBUTTONUP:
@@ -49,8 +50,8 @@ class Application():
             fps_text = self.font.render("FPS: {}".format(int(self.clock.get_fps())), True, (180,180,180))
             self.screen.blit(fps_text, (10, 10))
 
-            log_text = self.font.render(self.log, True, (255,255,255))
-            self.screen.blit(log_text, (10, self.size[1]-30))
+            # log_text = self.font.render(self.log, True, (255,255,255))
+            # self.screen.blit(log_text, (10, self.size[1]-30))
 
             if mouse_pos[0] < 10 and mouse_pos[1] < 10 and platform.system() == "Linux":
                 self.alive = False
@@ -60,5 +61,11 @@ class Application():
 
         pygame.quit()
         sys.exit()
+
+
+    def log(self, text):
+        text = str(text)
+        with open("log.txt", "a") as f:
+            f.write(text+"\n")
 
 Application()

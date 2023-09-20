@@ -10,10 +10,10 @@ def get(points):
     # list temp, check for collisions
     results = []
     gestures = {
-        "up": diffy > 100 and inxy(points, 20, 0),
-        "down": diffy < -100 and inxy(points, 20, 0),
-        "left": diffx > 100 and inxy(points, 20, 1),
-        "right": diffx < -100 and inxy(points, 20, 1),
+        "up": diffy > 100 and inxy(points, 50, 0),
+        "down": diffy < -100 and inxy(points, 50, 0),
+        "left": diffx > 100 and inxy(points, 50, 1),
+        "right": diffx < -100 and inxy(points, 50, 1),
     }
     for gesture in gestures:
         if gestures[gesture]:
