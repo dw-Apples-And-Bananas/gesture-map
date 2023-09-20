@@ -17,7 +17,7 @@ class Application():
         pygame.display.set_caption("Gesture Map")
         self.size = pygame.display.get_window_size()
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.SysFont('Arial', 24)
+        self.font = pygame.font.SysFont('Arial', 18)
         self.mouse = Mouse()
         self.points = []
         self.log = ""
