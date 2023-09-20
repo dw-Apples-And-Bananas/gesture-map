@@ -31,7 +31,7 @@ def inxy(points, _range, xy):
 def run(gesture):
     funcs = {
         "up": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL], KeyCodes.KEY_Z]],
-        "down": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL, KeyCodes.MOD_LEFT_SHIFT], KeyCodes.KEY_Z]],
+        "down": [keyboard.press, [[KeyCodes.MOD_LEFT_CONTROL, KeyCodes.MOD_RIGHT_SHIFT], KeyCodes.KEY_Z]],
         "left": [keyboard.press, [[], KeyCodes.KEY_L]],
         "right": [keyboard.press, [[], KeyCodes.KEY_R]],
     }
